@@ -1,0 +1,50 @@
+button:active, button:hover, button:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+
+.nav-link {
+    font-family: Merriweather;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+#nav-it {
+    color: black
+}
+
+#nav-it:hover {
+    color: #1CB71C
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.card {
+    margin-bottom: 30px;
+}
+
+.card-title {
+    color: #1CB71C;
+}
+
+.card-title:hover {
+    color: #349f34
+}
+
+.card-body a:hover {
+    text-decoration: none;
+}
+
+#new-games {
+    border: 2px solid black
+}
+
+.search-h {
+    font-family: Merriweather;
+    margin-top: 50px;
+}

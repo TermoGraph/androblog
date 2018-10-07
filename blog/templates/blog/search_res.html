@@ -1,0 +1,28 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+Искать
+{% endblock %}
+
+{% block content %}
+
+{% if blank %}
+    <div class="col-md-8 offset-md-2">
+        <h1>Пустой Запрос!</h1>
+        <a class="btn btn-primary btn-lg" href="{% url 'home_page' %}">BACK HOME</a>
+    </div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% for post in posts %}
+            <a href="{% url 'post_detail_url' slug=post.slug %}" style="color:#1CB71C"><h5 class="search-h">{{ post.title }}</h5></a>
+            <p>{{ post.body|truncatewords:20 }} <a href="{% url 'post_detail_url' slug=post.slug %}" style="color:#1CB71C">Читать далее</a></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

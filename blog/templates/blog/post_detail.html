@@ -1,0 +1,35 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-8 offset-md-2 col-xs-12">
+        <h3 style="margin-bottom:20px; font-family:Merriweather">{{ post.title }}</h3>
+        <img style="margin-bottom:30px" height="400" class="card-img-top" src="/media/{{ post.image }}" alt="Card image cap">
+        <p style="font-family:Karla; font-size:20px">{{ post.body }}</p>
+        <div style="margin-top: 40px">
+            <h4 style="margin-bottom:40px"><span style="color:white; background-color: #1CB71C; border: 2px solid #1CB71C; border-radius: 3px">Коментарии</span></h4>
+            {% for comment in comments %}
+            <span><b>{{ comment.author }}</b><i style="margin-left:10px">{{ comment.pub_date }}</i></span>
+            <p style="margin-bottom:30px">{{ comment.text }}</p>
+            {% endfor %}
+            {% if auth == 'true' %}
+            <form method="POST" name="comm_form" action="{% url 'post_detail_url' slug=post.slug %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label style="margin-top:40px">{{ form.label }}</label>
+                    {{ form }}
+                </div>
+                <input type="submit" class="btn btn-primary" value="Добавить">
+            </form>
+            {% endif %}
+
+
+            {% if auth == 'false' %}
+            <p><b><i>Чтобы оставить коментарии, вы должный авторизоваться</i></b></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
